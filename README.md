@@ -12,7 +12,7 @@ The bot is really simple and customizable.
 - Token counter and token limiter
 
 ## Setup instructions:
-1. Join [Pawan's Discord Server](discord.pawan.krd)
+1. Join [Pawan's Discord Server](https://discord.pawan.krd)
 2. Verify (if you have to) and go to the channel "#bot"
 3. Type in /key
 4. Copy the key to main.py
