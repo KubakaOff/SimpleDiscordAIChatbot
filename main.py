@@ -3,7 +3,7 @@ from discord.ext import commands
 usage = None
 openai.base_url = None
 model = None
-# =============================================================================================================================================
+# ================================================================================================================================================
 # BOT SETUP
 # 1. GO TO discord.pawan.krd and join the server
 # 2. Verify (if you have to) and go to the channel "#bot"
@@ -50,10 +50,11 @@ num_messages = int(round(max_context / 100))
 #
 # Length of response, one token is around 3-4 characters, so the max is around 400-500, I would recommend something like 200, depends on use case
 response_length = 200
+#
 # If the bot should repeat more, but be more intelligent, or repeat less, but be less inteligent, the starting point is 0.7, play with it until
 # you get the desired inteligence to repetition ratio
 temperature = 0.7
-
+# ================================================================================================================================================
 
 enc = tiktoken.get_encoding("cl100k_base")
 intents = discord.Intents.default()
