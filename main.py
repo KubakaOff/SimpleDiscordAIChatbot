@@ -3,7 +3,7 @@ from discord.ext import commands
 usage = None
 openai.base_url = None
 model = None
-# ================================================================================================================================================
+# =============================================================================================================================================
 # BOT SETUP
 # 1. GO TO discord.pawan.krd and join the server
 # 2. Verify (if you have to) and go to the channel "#bot"
@@ -54,7 +54,7 @@ response_length = 200
 # If the bot should repeat more, but be more intelligent, or repeat less, but be less inteligent, the starting point is 0.7, play with it until
 # you get the desired inteligence to repetition ratio
 temperature = 0.7
-# ================================================================================================================================================
+# =============================================================================================================================================
 
 enc = tiktoken.get_encoding("cl100k_base")
 intents = discord.Intents.default()
@@ -112,7 +112,7 @@ async def chat(ctx, *args):
             temperature = temperature,
             max_tokens = response_length,
             stream = False)
-        await ctx.channel.send(response.choices[0].message.content[:2000])
+        await ctx.reply(response.choices[0].message.content[:2000])
 
 @bot.command()
 async def setchatbotchannel(ctx, channel: discord.TextChannel = None):
@@ -148,11 +148,11 @@ async def setchatbotchannel(ctx, channel: discord.TextChannel = None):
 @bot.command()
 async def status(ctx):
     response = requests.get('https://api.pawan.krd/info', headers={'Authorization': openai.api_key})
-    await ctx.send(f"Credits: `{response.json()['info']['credit']}` (approx. `{round(response.json()['info']['credit']/usage*(max_context/1000))}` interactions)")
+    await ctx.reply(f"Credits: `{response.json()['info']['credit']}` (approx. `{round(response.json()['info']['credit']/usage*(max_context/1000))}` interactions)")
 
 @bot.command()
 async def help(ctx):
-    await ctx.send("**AI Bot Help**\n```ai!help - You are here\nai!chat {message} - Send a message to the bot\nai!status - Show remaining credits for today for the whole bot```\n**Admin Commands**\n```ai!setchatbotchannel {channel} - Set a channel where the AI can chat```")
+    await ctx.reply("**AI Bot Help**\n```ai!help - You are here\nai!chat {message} - Send a message to the bot\nai!status - Show remaining credits for today for the whole bot```\n**Admin Commands**\n```ai!setchatbotchannel {channel} - Set a channel where the AI can chat```")
 
 @bot.event
 async def on_message(msg):
@@ -194,7 +194,7 @@ async def on_message(msg):
                 temperature = temperature,
                 max_tokens = response_length,
                 stream = False)
-            await msg.channel.send(response.choices[0].message.content[:2000])
+            await msg.reply(response.choices[0].message.content[:2000])
     else:
         await bot.process_commands(msg)
 
