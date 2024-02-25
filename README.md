@@ -22,4 +22,5 @@ The bot is really simple and customizable.
 8. Uncomment one of the models in the main.py file
 9. Configure rest of the stuff in main.py file, the comments are there to explain everything
 10. Done!
+
 **IMPORTANT! IF YOU GET ANY ERRORS WHEN GENERATING A RESPONSE, RUN /resetip IN THE #bot CHANNEL IN THE PAWAN SERVER YOU JOINED EARLIER**
