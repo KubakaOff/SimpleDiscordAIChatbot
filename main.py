@@ -21,9 +21,9 @@ discord_token = "TOKEN FROM DISCORD DEV PORTAL"
 #
 # Here you can change the model to:
 # PAI-001-LIGHT - Generic model - Uses 0.25 credits per 1000 tokens - Max tokens = 16384
-# model = "pai-001-light"
-# openai.base_url = "https://api.pawan.krd/pai-001-light/v1/"
-# usage = 0.25
+model = "pai-001-light"
+openai.base_url = "https://api.pawan.krd/pai-001-light/v1/"
+usage = 0.25
 #
 # PAI-001-LIGHT-RP - Roleplay model - Uses 0.25 credits per 1000 tokens - Max tokens = 16384
 # model = "pai-001-light-rp"
@@ -148,7 +148,7 @@ async def setchatbotchannel(ctx, channel: discord.TextChannel = None):
 @bot.command()
 async def status(ctx):
     response = requests.get('https://api.pawan.krd/info', headers={'Authorization': openai.api_key})
-    await ctx.reply(f"Credits: `{response.json()['info']['credit']}` (approx. `{round(response.json()['info']['credit']/usage*(max_context/1000))}` interactions)")
+    await ctx.reply(f"Credits: `{response.json()['info']['credit']}` (approx. `{round(response.json()['info']['credit']/max_context*(usage/1000))}` interactions)")
 
 @bot.command()
 async def help(ctx):
