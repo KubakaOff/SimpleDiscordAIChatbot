@@ -1,5 +1,5 @@
 # Simple Discord AI Chatbot
-This Chatbot uses [Pawans](discord.pawan.krd) API to generate responses for free.
+This Chatbot uses [Pawans](https://discord.pawan.krd) API to generate responses for free.
 
 The bot is really simple and customizable.
 
