@@ -1,4 +1,4 @@
-import asyncio,discord,json,tiktoken,openai,requests
+import asyncio,discord,json,tiktoken,openai,requests,sys
 from discord.ext import commands
 from config import *
 
@@ -16,6 +16,18 @@ try:
         channels = json.load(f)
 except FileNotFoundError:
     channels = {}
+
+if roleplay:
+    if model == "pai-001-light":
+        model = "pai-001-light-rp"
+    elif model == "pai-001":
+        model = "pai-001-rp"
+    if nocontext_model != None:
+        if nocontext_model == "pai-001-light":
+            nocontext_model = "pai-001-light-rp"
+        elif nocontext_model == "pai-001":
+            nocontext_model = "pai-001-rp"
+
 
 def get_role(author) -> str:
     if author == bot.user:
@@ -52,9 +64,14 @@ async def chat(ctx, *args):
     else:
         actual_response_length = response_length
 
+    if nocontext_temperature != None:
+        actual_temperature = nocontext_temperature
+    else:
+        actual_temperature = temperature
+
     messages = [{"role": "user", "content": input}]
     async with ctx.channel.typing():
-        response = await asyncio.wait_for(generate_response(selected_model, messages, temperature, actual_response_length), None)
+        response = await asyncio.wait_for(generate_response(selected_model, messages, actual_temperature, actual_response_length), None)
         await ctx.reply(response.choices[0].message.content[:2000])
 
 @bot.command()
