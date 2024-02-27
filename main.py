@@ -1,7 +1,6 @@
 import discord,json,tiktoken,openai,requests,sys
 from discord.ext import commands
 usage = None
-openai.base_url = None
 model = None
 # =============================================================================================================================================
 # BOT SETUP
@@ -22,22 +21,18 @@ discord_token = "TOKEN FROM DISCORD DEV PORTAL"
 # Here you can change the model to:
 # PAI-001-LIGHT - Generic model - Uses 0.25 credits per 1000 tokens - Max tokens = 16384
 # model = "pai-001-light"
-# openai.base_url = "https://api.pawan.krd/pai-001-light/v1/"
 # usage = 0.25
 #
 # PAI-001-LIGHT-RP - Roleplay model - Uses 0.25 credits per 1000 tokens - Max tokens = 16384
 # model = "pai-001-light-rp"
-# openai.base_url = "https://api.pawan.krd/pai-001-light-rp/v1/"
 # usage = 0.25
 #
 # PAI-001 - Generic model - Uses 0.5 credits per 1000 tokens - Max tokens = 32768
 # model = "pai-001"
-# openai.base_url = "https://api.pawan.krd/pai-001/v1/"
 # usage = 0.5
 #
 # PAI-001-RP - Roleplay model - Uses 0.5 credits per 1000 tokens - Max tokens = 32768
 # model = "pai-001-rp"
-# openai.base_url = "https://api.pawan.krd/pai-001-rp/v1/"
 # usage = 0.5
 #
 #
@@ -55,6 +50,8 @@ response_length = 200
 # you get the desired inteligence to repetition ratio
 temperature = 0.7
 # =============================================================================================================================================
+
+openai.base_url = "https://api.pawan.krd/v1/chat/completions/"
 
 enc = tiktoken.get_encoding("cl100k_base")
 intents = discord.Intents.default()
@@ -79,10 +76,6 @@ def get_role(author) -> str:
 
 if openai.api_key == None:
     print("You forgot to get the pawan API key, follow the instructions carefully or the bot won't work!")
-    sys.exit()
-
-if openai.base_url == None:
-    print("You forgot to uncomment the model below the instructions, the bot won't work without it!")
     sys.exit()
 
 if model == None:
