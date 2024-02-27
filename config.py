@@ -19,22 +19,20 @@ discord_token = "TOKEN FROM DISCORD DEV PORTAL"
 # 10. Done!
 # IMPORTANT! IF YOU GET ANY ERRORS WHEN GENERATING A RESPONSE, RUN /resetip IN THE #bot CHANNEL IN THE PAWAN SERVER YOU JOINED EARLIER
 #
-# Here you can change the model to (comment the current model and usage and uncomment the new model and usage to change it):
-# PAI-001-LIGHT - Generic model - Uses 0.25 credits per 1000 tokens - Max tokens = 16384
+# Here you can change the model to:
+# PAI-001-LIGHT - Uses 0.25 credits per 1000 tokens - Max tokens = 16384
 # model = "pai-001-light"
 # usage = 0.25
 #
-# PAI-001-LIGHT-RP - Roleplay model - Uses 0.25 credits per 1000 tokens - Max tokens = 16384
-# model = "pai-001-light-rp"
-# usage = 0.25
-#
-# PAI-001 - Generic model - Uses 0.5 credits per 1000 tokens - Max tokens = 32768
+# PAI-001 - Uses 0.5 credits per 1000 tokens - Max tokens = 32768
 # model = "pai-001"
 # usage = 0.5
 #
-# PAI-001-RP - Roleplay model - Uses 0.5 credits per 1000 tokens - Max tokens = 32768
-# model = "pai-001-rp"
-# usage = 0.5
+#
+# Should the model be in roleplay mode? (only applicable to pai models)
+# In roleplay mode the bot is more likely to generate NSFW (but no the no roleplay version can generate NSFW too)
+# Roleplay mode is also behaving more like a human, has it's own "feelings", "opinions" etc. (even though they're fake)
+roleplay = False
 #
 #
 # Prefix for commands in the bot
@@ -58,6 +56,10 @@ nocontext_model = None
 #
 # If you want a different response length for chatting without context, enter it here as an integer
 nocontext_response_length = None
+#
+# If the bot is repeating itself with context, you should set the normal temperature lower, and this one higher
+# Keep in mind that it will make the bot less "intelligent".
+nocontext_temperature = None
 #
 # If you don't want the "status" command, change it to False.
 status_command = True
