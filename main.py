@@ -36,6 +36,8 @@ discord_token = "TOKEN FROM DISCORD DEV PORTAL"
 # usage = 0.5
 #
 #
+# Prefix for commands in the bot
+command_prefix = "ai!"
 # This is the max context, you get 250 credits daily, pai-001-light models use 0.25 credits per 1000, and pai-001 use 0.5 per 1000
 max_context = 2000
 #
@@ -48,6 +50,15 @@ response_length = 200
 # If the bot should repeat more, but be more intelligent, or repeat less, but be less inteligent, the starting point is 0.7, play with it until
 # you get the desired inteligence to repetition ratio
 temperature = 0.7
+#
+# If you want to use a different model for chatting without context, enter it here as a string
+nocontext_model = None
+#
+# If you want a different response length for chatting without context, enter it here as an integer
+nocontext_response_length = None
+#
+# If you don't want the "status" command, change it to False.
+status_command = True
 # =============================================================================================================================================
 
 openai.base_url = "https://api.pawan.krd/v1/"
@@ -57,15 +68,15 @@ intents = discord.Intents.default()
 
 intents.message_content = True
 
-bot = commands.Bot(command_prefix='ai!', intents=intents)
+bot = commands.Bot(command_prefix=command_prefix, intents=intents)
 bot.remove_command('help')
 
-# Load the settings into memory when the bot starts up
+# Load the channels into memory when the bot starts up
 try:
     with open('channels.json', 'r') as f:
-        settings = json.load(f)
+        channels = json.load(f)
 except FileNotFoundError:
-    settings = {}
+    channels = {}
 
 def get_role(author) -> str:
     if author == bot.user:
@@ -97,18 +108,27 @@ async def chat(ctx, *args):
         return
     
     input = ' '.join(map(str, args))
+    if nocontext_model != None:
+        selected_model = nocontext_model
+    else:
+        selected_model = model
+
+    if nocontext_response_length != None:
+        actual_response_length = nocontext_response_length
+    else:
+        actual_response_length = response_length
     async with ctx.channel.typing():
         response = openai.chat.completions.create(
-            model = model,
+            model = selected_model,
             messages = [{"role": "user", "content": input}],
             temperature = temperature,
-            max_tokens = response_length,
+            max_tokens = actual_response_length,
             stream = False)
         await ctx.reply(response.choices[0].message.content[:2000])
 
 @bot.command()
 async def setchatbotchannel(ctx, channel: discord.TextChannel = None):
-    global settings
+    global channels
     if channel is None:
         await ctx.send("No channel was provided.")
         return
@@ -119,19 +139,19 @@ async def setchatbotchannel(ctx, channel: discord.TextChannel = None):
         server_id = str(ctx.guild.id)
         channel_id = str(channel.id)
 
-        # Load the current settings from the JSON file
+        # Load the current channels from the JSON file
         try:
             with open('channels.json', 'r') as f:
-                settings = json.load(f)
+                channels = json.load(f)
         except FileNotFoundError:
-            settings = {}
+            channels = {}
 
-        # Update the settings for this server
-        settings[server_id] = channel_id
+        # Update the channels for this server
+        channels[server_id] = channel_id
 
-        # Save the updated settings back to the JSON file
+        # Save the updated channels back to the JSON file
         with open('channels.json', 'w') as f:
-            json.dump(settings, f)
+            json.dump(channels, f)
 
         await ctx.send(f"Channel set to {channel.mention}")
     else:
@@ -139,13 +159,17 @@ async def setchatbotchannel(ctx, channel: discord.TextChannel = None):
 
 @bot.command()
 async def status(ctx):
-    response = requests.get('https://api.pawan.krd/info', headers={'Authorization': openai.api_key})
-    approx = response.json()['info']['credit']/(max_context*(usage/1000))
-    await ctx.reply(f"Credits: `{response.json()['info']['credit']}` (approx. `{round(approx)}` interactions)")
+    if status_command:
+        response = requests.get('https://api.pawan.krd/info', headers={'Authorization': openai.api_key})
+        approx = response.json()['info']['credit']/(max_context*(usage/1000))
+        await ctx.reply(f"Credits: `{response.json()['info']['credit']}` (approx. `{round(approx)}` interactions)")
 
 @bot.command()
 async def help(ctx):
-    await ctx.reply("**AI Bot Help**\n```ai!help - You are here\nai!chat {message} - Send a message to the bot\nai!status - Show remaining credits for today for the whole bot```\n**Admin Commands**\n```ai!setchatbotchannel {channel} - Set a channel where the AI can chat```")
+    if not status_command:
+        await ctx.reply(f"**AI Bot Help**\n```{command_prefix}help - You are here\n{command_prefix}chat [message] - Send a message to the bot```\n**Admin Commands**\n```{command_prefix}setchatbotchannel [channel] - Set a channel where the AI can chat```")
+    else:
+        await ctx.reply(f"**AI Bot Help**\n```{command_prefix}help - You are here\n{command_prefix}chat [message] - Send a message to the bot\n{command_prefix}status - Show remaining credits for today for the whole bot```\n**Admin Commands**\n```{command_prefix}setchatbotchannel [channel] - Set a channel where the AI can chat```")
 
 @bot.event
 async def on_message(msg):
@@ -155,7 +179,7 @@ async def on_message(msg):
 
     # Check if the message was sent in the set channel for this server
     server_id = str(msg.guild.id)
-    if server_id in settings and str(msg.channel.id) == settings[server_id]:
+    if server_id in channels and str(msg.channel.id) == channels[server_id]:
         limit = num_messages
         messages = [message async for message in msg.channel.history(limit=limit)]
         message_count = len(messages)
