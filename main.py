@@ -91,7 +91,7 @@ async def setchatbotchannel(ctx, channel: discord.TextChannel = None):
 @bot.command()
 async def status(ctx):
     if status_command:
-        response = requests.get('https://api.pawan.krd/info', headers={'Authorization': openai.api_key})
+        response = requests.get('https://api.pawan.krd/info', headers={'Authorization': openai_api_key})
         approx = response.json()['info']['credit']/(max_context*(usage/1000))
         await ctx.reply(f"Credits: `{response.json()['info']['credit']}` (approx. `{round(approx)}` interactions)")
 
