@@ -1,4 +1,4 @@
-import discord,json,tiktoken,openai,requests,sys
+import asyncio,discord,json,tiktoken,openai,requests,sys
 from discord.ext import commands
 usage = None
 model = None
@@ -96,7 +96,14 @@ if model == None:
 if usage == None:
     print("You forgot to uncomment the usage below the model, the bot won't work without it!")
     sys.exit()
-    
+
+async def generate_response(model, messages, temperature, max_tokens):
+    return await openai.AsyncOpenAI(api_key=openai.api_key, base_url=openai.base_url).chat.completions.create(
+        model = model,
+        messages = messages,
+        temperature = temperature,
+        max_tokens = max_tokens,
+        stream = False)
 
 @bot.event
 async def on_ready():
@@ -118,13 +125,10 @@ async def chat(ctx, *args):
         actual_response_length = nocontext_response_length
     else:
         actual_response_length = response_length
+
+    messages = [{"role": "user", "content": input}]
     async with ctx.channel.typing():
-        response = openai.chat.completions.create(
-            model = selected_model,
-            messages = [{"role": "user", "content": input}],
-            temperature = temperature,
-            max_tokens = actual_response_length,
-            stream = False)
+        response = await asyncio.wait_for(generate_response(model, messages, temperature, response_length), None)
         await ctx.reply(response.choices[0].message.content[:2000])
 
 @bot.command()
@@ -206,12 +210,7 @@ async def on_message(msg):
         truncated_messages.reverse()
 
         async with msg.channel.typing():
-            response = openai.chat.completions.create(
-                model = model,
-                messages = truncated_messages,
-                temperature = temperature,
-                max_tokens = response_length,
-                stream = False)
+            response = await asyncio.wait_for(generate_response(model, messages, temperature, response_length), None)
             await msg.reply(response.choices[0].message.content[:2000])
     else:
         await bot.process_commands(msg)
