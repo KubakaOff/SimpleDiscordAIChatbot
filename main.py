@@ -1,4 +1,4 @@
-import asyncio,discord,json,tiktoken,openai,requests,sys
+import asyncio,discord,json,tiktoken,openai,requests
 from discord.ext import commands
 from config import *
 
