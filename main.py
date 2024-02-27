@@ -36,7 +36,6 @@ discord_token = "TOKEN FROM DISCORD DEV PORTAL"
 # usage = 0.5
 #
 #
-#
 # This is the max context, you get 250 credits daily, pai-001-light models use 0.25 credits per 1000, and pai-001 use 0.5 per 1000
 max_context = 2000
 #
@@ -51,7 +50,7 @@ response_length = 200
 temperature = 0.7
 # =============================================================================================================================================
 
-openai.base_url = "https://api.pawan.krd/v1/chat/completions/"
+openai.base_url = "https://api.pawan.krd/v1/"
 
 enc = tiktoken.get_encoding("cl100k_base")
 intents = discord.Intents.default()
