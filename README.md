@@ -17,12 +17,12 @@ The bot is really simple and customizable.
 1. Join [Pawan's Discord Server](https://discord.pawan.krd)
 2. Verify (if you have to) and go to the channel "#bot"
 3. Type in /key
-4. Copy the key to main.py
+4. Copy the key to config.py
 5. Install discord.py, tiktoken and openai (`python -m pip install discord tiktoken openai`)
 6. Go to the [Discord Developer Portal](https://discord.com/developers/applications) and Generate a bot token
-7. Copy the token to main.py
-8. Uncomment one of the models in the main.py file
-9. Configure rest of the stuff in main.py file, the comments are there to explain everything
+7. Copy the token to config.py
+8. Uncomment one of the models in the config.py file
+9. Configure rest of the stuff in the config.py, the comments are there to explain everything
 10. Done!
 
 **IMPORTANT! IF YOU GET ANY ERRORS WHEN GENERATING A RESPONSE, RUN /resetip IN THE #bot CHANNEL IN THE PAWAN SERVER YOU JOINED EARLIER**
