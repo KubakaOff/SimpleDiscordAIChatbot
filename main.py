@@ -38,6 +38,7 @@ discord_token = "TOKEN FROM DISCORD DEV PORTAL"
 #
 # Prefix for commands in the bot
 command_prefix = "ai!"
+#
 # This is the max context, you get 250 credits daily, pai-001-light models use 0.25 credits per 1000, and pai-001 use 0.5 per 1000
 max_context = 2000
 #
