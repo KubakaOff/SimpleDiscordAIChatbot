@@ -8,7 +8,7 @@ The bot is really simple and customizable.
 - Asynchronous generation
 - Option to run in a dedicated channel (`ai!setchatbotchannel (channel)`)
 - Proper permissions
-- API Key status for the whole bot (`ai!status`) (can be turned of in main.py)
+- API Key status for the whole bot (`ai!status`) (can be turned of in config.py)
 - Customizable
 - Separate model and context length for chatting without context
 - Token counter and token limiter
