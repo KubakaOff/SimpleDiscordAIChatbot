@@ -54,7 +54,7 @@ async def chat(ctx, *args):
 
     messages = [{"role": "user", "content": input}]
     async with ctx.channel.typing():
-        response = await asyncio.wait_for(generate_response(model, messages, temperature, response_length), None)
+        response = await asyncio.wait_for(generate_response(selected_model, messages, temperature, actual_response_length), None)
         await ctx.reply(response.choices[0].message.content[:2000])
 
 @bot.command()
