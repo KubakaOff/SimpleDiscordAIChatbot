@@ -1,3 +1,6 @@
+## **Caution!**
+**Before updating please check the last time the config has been updated and update it accordingally.**
+
 # Simple Discord AI Chatbot
 This Chatbot uses [Pawans](https://discord.pawan.krd) API to generate responses for free.
 
