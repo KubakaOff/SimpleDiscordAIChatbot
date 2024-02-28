@@ -1,3 +1,4 @@
+# REWRITE COMING SOON!
 ## **Caution!**
 **Before updating please check the last time the config has been updated and update it accordingally.**
 
