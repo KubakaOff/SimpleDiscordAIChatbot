@@ -23,7 +23,8 @@ The bot is really simple and customizable.
 3. Type in /key
 4. Copy the key to config.py
 5. Install py-cord, tiktoken and openai (`python -m pip install py-cord tiktoken openai`)
-6. Go to the [Discord Developer Portal](https://discord.com/developers/applications) and Generate a bot token
+Note: You can also use discord.py, but i won't provide support since this bot is made for py-cord
+6. Go to the [Discord Developer Portal](https://discord.com/developers/applications) and generate a bot token
 7. Copy the token to config.py
 8. Uncomment one of the models in the config.py file
 9. Configure rest of the stuff in the config.py, the comments are there to explain everything
