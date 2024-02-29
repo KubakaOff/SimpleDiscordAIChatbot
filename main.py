@@ -254,9 +254,11 @@ async def on_message(msg):
             truncated_messages.pop()
             truncated_messages.insert(0, {"role": "system", "content": actual_prompt})
         
-        if server_id not in variants: actual_roleplay = roleplay
-        elif channel_id in variants[server_id]: actual_roleplay = variants[server_id][channel_id]
-        else: actual_roleplay = variants[server_id]['global']
+        if server_id in variants: 
+            if channel_id in variants[server_id]: actual_roleplay = variants[server_id][channel_id]
+            elif "global" in variants[server_id]: actual_roleplay = variants[server_id]['global']
+            else: actual_roleplay = roleplay
+        else: actual_roleplay = roleplay
     
         if actual_roleplay:
             actual_model = model + "-rp"
