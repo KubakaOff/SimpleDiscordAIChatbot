@@ -5,15 +5,19 @@
 # Simple Discord AI Chatbot
 This Chatbot uses [Pawans](https://discord.pawan.krd) API to generate responses for free.
 
+Running instance: https://discord.com/oauth2/authorize?client_id=921730426047954965&permissions=274881154048&scope=bot
+
 The bot is really simple and customizable.
 
 ## Features:
 - Context when running in a dedicated channel
 - Asynchronous generation
-- Option to run in a dedicated channel (`ai!setchatbotchannel (channel)`)
+- Option to run in dedicated channels (`ai!chatbotchannel (channel)`)
 - Proper permissions
 - API Key status for the whole bot (`ai!status`) (can be turned off in config.py)
-- Customizable
+- Enable roleplay mode for a channel, server, or the whole bot! (can be disabled in config) (`ai!switchmodel`)
+- Custom prompts for a channel, server, or for the whole bot! (can be disabled in config) (`ai!setprompt`)
+- Customizable (both by the server admins and the instance admin)
 - Separate model and context length for chatting without context
 - Token counter and token limiter
 
