@@ -1,6 +1,6 @@
-# REWRITE COMING SOON!
-## **Caution!**
-**Before updating please check the last time the config has been updated and update it accordingally.**
+# REWRITE DONE
+## **For people that update from version older than from 29 Feb 2024:**
+**Please delete the `channels.json` file in the directory same as `main.py`.**
 
 # Simple Discord AI Chatbot
 This Chatbot uses [Pawans](https://discord.pawan.krd) API to generate responses for free.
