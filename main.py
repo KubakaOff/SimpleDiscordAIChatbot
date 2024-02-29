@@ -80,6 +80,7 @@ async def chat(ctx, *, args):
     else: actual_roleplay = roleplay
     
     if actual_roleplay: actual_model = selected_model + "-rp"
+    else: actual_model = selected_model
 
     if server_id in prompts:
         if "global" in prompts[server_id]:
