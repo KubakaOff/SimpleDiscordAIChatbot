@@ -182,7 +182,7 @@ async def setprompt(ctx, *args):
             channel_id = channel_id.replace("<", "").replace("#", "").replace(">", "")
             args.pop()
         input = ' '.join(map(str, args))
-        if args.empty:
+        if not args:
             ctx.send("Please include the prompt in your message.")
         if channel_id != None and ctx.message.author.guild_permissions.manage_channels:
             if server_id not in prompts:
@@ -199,6 +199,7 @@ async def setprompt(ctx, *args):
             prompts[server_id]['global'] = input
             with open(prompts_filename, 'w') as f:
                 json.dump(prompts, f)
+            await ctx.send(f"Prompt set globally.")
         else:
             await ctx.send("Please make sure you have the `Manage Channels` permission when modifying a channel, or the `Manage Server` permission when modifying globally.")
 
