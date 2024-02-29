@@ -76,7 +76,8 @@ async def chat(ctx, *, args):
         messages.append({"role": "system", "content": nocontext_prompt})
     
     if server_id not in variants: actual_roleplay = roleplay
-    else: actual_roleplay = variants[server_id]['global']
+    elif "global" in variants[server_id]: actual_roleplay = variants[server_id]['global']
+    else: actual_roleplay = roleplay
     
     if actual_roleplay: actual_model = selected_model + "-rp"
 
