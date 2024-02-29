@@ -129,7 +129,7 @@ async def switchmodel(ctx, channel: discord.TextChannel = None):
             channel_id = str(channel.id)
 
             if server_id not in variants:
-                variants[server_id] = []
+                variants[server_id] = {}
 
             if channel_id not in variants[server_id]:
                 if "global" not in variants[server_id]:
