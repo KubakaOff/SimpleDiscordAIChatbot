@@ -2,6 +2,8 @@
 ## **For people that update from version older than from 29 Feb 2024:**
 **Please delete the `channels.json` file in the directory same as `main.py`.**
 
+Last `config.py` change: 4 Mar 2024
+
 # Simple Discord AI Chatbot
 This Chatbot uses [Pawans](https://discord.pawan.krd) API to generate responses for free.
 
@@ -21,7 +23,7 @@ The bot is really simple and customizable.
 - Separate model and context length for chatting without context
 - Token counter and token limiter
 
-## Setup instructions:
+### Setup instructions:
 1. Join [Pawan's Discord Server](https://discord.pawan.krd)
 2. Verify (if you have to) and go to the channel "#bot"
 3. Type in /key
@@ -35,3 +37,21 @@ Note: You can also use discord.py, but i won't provide support since this bot is
 10. Done!
 
 **IMPORTANT! IF YOU GET ANY ERRORS WHEN GENERATING A RESPONSE, RUN /resetip IN THE #bot CHANNEL IN THE PAWAN SERVER YOU JOINED EARLIER**
+
+### FAQ
+
+**Q:** How to use original OpenAI API instead of Pawan API?
+
+**A:** Change base url in config to `https://api.openai.com/v1/`
+
+
+
+**Q:** Can i use GPT-4 or GPT-3.5 on Pawan?
+
+**A:** Yes, but you need a `Supporter` role in their Discord server, and for GPT-4 you need `Supporter I`. This project does not support error handling that pawan uses for their GPT-4 and GPT-3.5, so if you really want to use it (mainly GPT-4), maybe try to make an issue and a PR.
+
+
+
+**Q:** Is PAI-002 supported?
+
+**A:** No because it isn't out yet, but as soon as it comes out, support will be added.
