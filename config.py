@@ -3,11 +3,11 @@
 # 2. Verify (if you have to) and go to the channel "#bot"
 # 3. Type in /key
 # 4. Copy the key here
-openai_api_key = "pk-vzUMtsqOEBwgmVIWZrsskaAVqmVCNIvTExhSdNPjlzftDmjD"
+openai_api_key = "KEY FROM discord.pawan.krd"
 # 5. Install py-cord, tiktoken and openai (python -m pip install py-cord tiktoken openai)
 # 6. Go to the Discord Developer Portal and Generate a bot token
 # 7. Enter the token below
-discord_token = "OTIxNzMwNDI2MDQ3OTU0OTY1.GRGPWT.qlhG8DgIUA37p1AWtYj4AYq03IajRO3lHWSrD8"
+discord_token = "TOKEN FROM DISCORD DEV PORTAL"
 # 8. Uncomment one of the models with the usage below the instruction
 # 9. Configure rest of the stuff, the comments are there to explain everything
 # 10. Done!
@@ -15,8 +15,8 @@ discord_token = "OTIxNzMwNDI2MDQ3OTU0OTY1.GRGPWT.qlhG8DgIUA37p1AWtYj4AYq03IajRO3
 #
 # Here you can change the model to:
 # PAI-001-LIGHT - Uses 0.25 credits per 1000 tokens - Max tokens = 16384 (DEFAULT)
-model = "pai-001-light"
-usage = 0.25
+# model = "pai-001-light"
+# usage = 0.25
 #
 # PAI-001 - Uses 0.5 credits per 1000 tokens - Max tokens = 32768
 # model = "pai-001"
@@ -57,13 +57,13 @@ nocontext_prompt = prompt
 prompt_change = True
 #
 # This is the max context, you get 250 credits daily, pai-001-light models use 0.25 credits per 1000, and pai-001 use 0.5 per 1000
-max_context = 1024
+max_context = 2000
 #
 # Amount of messages to get, if I were you, I would just set it to max_context / 200 or max_context / 150, maybe even max_context / 100
 num_messages = int(round(max_context / 100))
 #
 # Length of response, one token is around 3-4 characters, so the max is around 500-600, I would recommend something like 200, depends on use case
-response_length = 500
+response_length = 250
 #
 # If the bot should repeat more, but be more intelligent, or repeat less, but be less inteligent, the starting point is 0.7, play with it until
 # you get the desired inteligence to repetition ratio
