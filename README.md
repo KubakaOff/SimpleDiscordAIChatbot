@@ -54,4 +54,16 @@ Note: You can also use discord.py, but i won't provide support since this bot is
 
 **Q:** Is PAI-002 supported?
 
-**A:** No because it isn't out yet, but as soon as it comes out, support will be added.
+**A:** Yes, it's only available for supporters, but only the roleplay model is available.
+
+If you REALLY want to use PAI-002 (in roleplay mode) and you are a supporter, paste this into your `config.py` file:
+
+```
+# PAWAN SUPPORTER ONLY - PAI-002-RP - Uses 1 credit per 1000 tokens - Max tokens = 32768
+# (you don't have to enable roleplay in config, disabling roleplay also does nothing since
+# this model is roleplay mode only)
+# model = "pai-002-rp"
+# usage = 1
+```
+
+When the generic model will be available, we will add official support.
