@@ -61,8 +61,8 @@ If you REALLY want to use PAI-002 (in roleplay mode) and you are a supporter, pa
 ```
 # PAWAN SUPPORTER ONLY - PAI-002-RP - Uses 1 credit per 1000 tokens - Max tokens = 32768
 # (you don't have to enable roleplay in config, disabling roleplay also does nothing since this model is roleplay mode only)
-# model = "pai-002-rp"
-# usage = 1
+model = "pai-002-rp"
+usage = 1
 ```
 
 When the generic model will be made available, we will add official support.
