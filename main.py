@@ -10,7 +10,7 @@ intents.message_content = True
 bot = commands.Bot(command_prefix=command_prefix, intents=intents)
 bot.remove_command('help')
 
-switchable = False
+models_switchable = False
 
 # Load everything into memory
 try:
@@ -32,9 +32,9 @@ except FileNotFoundError:
     prompts = {}
 
 if model in ["pai-001-light", "pai-001"]:
-    switchable = True
+    models_switchable = True
     if nocontext_model in ["pai-001-light", "pai-001"]:
-        switchable = True
+        models_switchable = True
 
 
 def get_role(author) -> str:
@@ -79,7 +79,7 @@ async def chat(ctx, *, args):
     elif "global" in variants[server_id]: actual_roleplay = variants[server_id]['global']
     else: actual_roleplay = roleplay
     
-    if actual_roleplay: actual_model = selected_model + "-rp"
+    if actual_roleplay and models_switchable: actual_model = selected_model + "-rp"
     else: actual_model = selected_model
 
     if server_id in prompts:
@@ -124,8 +124,8 @@ async def chatbotchannel(ctx, channel: discord.TextChannel = None):
 
 @bot.command()
 async def switchmodel(ctx, channel: discord.TextChannel = None):
-    global variants, switchable, model_variant_switching
-    if model_variant_switching and switchable:
+    global variants, models_switchable, model_variant_switching
+    if model_variant_switching and models_switchable:
         server_id = str(ctx.guild.id)
         if channel != None and ctx.message.author.guild_permissions.manage_channels:
             channel_id = str(channel.id)
@@ -266,7 +266,7 @@ async def on_message(msg):
             else: actual_roleplay = roleplay
         else: actual_roleplay = roleplay
     
-        if actual_roleplay:
+        if actual_roleplay and models_switchable:
             actual_model = model + "-rp"
         else:
             actual_model = model
