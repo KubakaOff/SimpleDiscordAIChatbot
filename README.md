@@ -5,7 +5,7 @@
 Last `config.py` change: 20 April 2024
 
 # Simple Discord AI Chatbot
-This Chatbot uses [Groq]((https://console.groq.com) API to generate responses.
+This Chatbot uses [Groq](https://console.groq.com) API to generate responses.
 
 If you want an always free AI, use the [pawan](https://github.com/KubakaOff/SimpleDiscordAIChatbot/tree/pawan) branch.
 
