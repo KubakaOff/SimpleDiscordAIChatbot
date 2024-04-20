@@ -57,7 +57,7 @@ async def chat(ctx, *, args):
     messages.append({"role": "user", "content": args})
     async with ctx.channel.typing():
         response = await asyncio.wait_for(generate_response(messages, temperature, response_length), None)
-        await ctx.reply(response.choices[0].message.content[:8000])
+        await ctx.reply(response.choices[0].message.content[:2000])
         
 @bot.command()
 async def chatbotchannel(ctx, channel: discord.TextChannel = None):
@@ -170,7 +170,7 @@ async def on_message(msg):
         
         async with msg.channel.typing():
             response = await asyncio.wait_for(generate_response(truncated_messages, temperature, response_length), None)
-            await msg.reply(response.choices[0].message.content[:8000])
+            await msg.reply(response.choices[0].message.content[:2000])
     else:
         await bot.process_commands(msg)
 
