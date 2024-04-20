@@ -31,7 +31,7 @@ def get_role(author) -> str:
 
 async def generate_response(messages, temperature, max_tokens):
     return await openai.AsyncOpenAI(api_key=api_key, base_url=openai_base_url).chat.completions.create(
-        model = "llama3-70b-8192",
+        model = model,
         messages = messages,
         temperature = temperature,
         max_tokens = max_tokens,
