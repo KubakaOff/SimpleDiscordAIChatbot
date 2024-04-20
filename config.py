@@ -64,5 +64,5 @@ help_command = f"""
 {command_prefix}setprompt [prompt] (channel) - Set prompt to prompt for the whole server or only for one channel.```
 
 You can host your own AI Discord Bot from here: https://github.com/KubakaOff/SimpleDiscordAIChatbot
-You can also [add the main instance to your own Discord server](https://discord.com/oauth2/authorize?client_id=921730426047954965&permissions=274881154048&scope=bot) (running on Pawan)
+You can also [add the main instance to your own Discord server](https://discord.com/oauth2/authorize?client_id=921730426047954965&permissions=274881154048&scope=bot)
 """
