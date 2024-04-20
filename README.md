@@ -8,7 +8,7 @@ Last `config.py` change: 20 April 2024
 This Chatbot uses [Groq](https://console.groq.com) API to generate responses.  
 This branch can be easily modified to use any other OpenAI API compatible service.
 
-If you want an always free AI, use the [pawan](https://github.com/KubakaOff/SimpleDiscordAIChatbot/tree/pawan) branch.
+If you want the old version, use the [pawan](https://github.com/KubakaOff/SimpleDiscordAIChatbot/tree/pawan) branch.
 
 Running instance: https://discord.com/oauth2/authorize?client_id=921730426047954965&permissions=274881154048&scope=bot (running on the [pawan](https://github.com/KubakaOff/SimpleDiscordAIChatbot/tree/pawan) branch)
 
