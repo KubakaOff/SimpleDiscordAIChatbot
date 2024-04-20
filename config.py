@@ -16,7 +16,15 @@ discord_token = "TOKEN FROM DISCORD DEV PORTAL"
 # Prefix for commands in the bot
 command_prefix = "ai!"
 #
-model = ""
+# If you don't want to use Groq cloud, change this to the OpenAI compatible base_url you want.
+openai_base_url = "https://api.groq.com/openai/v1"
+#
+# Enter the model you want to use here.
+model = "llama3-70b-8192"
+# Use as much as you can afford (and as much as the model supports)
+max_context = 8000
+# Length of response, one token is around 3-4 characters, so the max is around 500-600, I would recommend something like 200, depends on use case
+response_length = 600
 #
 # Prompt for the AI to follow (as system message). Set to None for no prompt
 prompt = None
@@ -27,14 +35,9 @@ nocontext_prompt = prompt
 # Can server admins/mods change the prompts for their server?
 prompt_change = True
 #
-# Use as much as you can afford.
-max_context = 8000
 #
 # Amount of messages to get, if I were you, I would just set it to max_context / 200 or max_context / 150, maybe even max_context / 100
 num_messages = int(round(max_context / 250))
-#
-# Length of response, one token is around 3-4 characters, so the max is around 500-600, I would recommend something like 200, depends on use case
-response_length = 600
 #
 # If the bot should repeat more, but be more intelligent, or repeat less, but be less inteligent, the starting point is 0.7, play with it until
 # you get the desired intelligence to repetition ratio
@@ -46,9 +49,6 @@ nocontext_response_length = None
 # If the bot is repeating itself with context, you should set the normal temperature higher, and this one lower
 # Keep in mind that it will make the bot less "intelligent".
 nocontext_temperature = None
-#
-# If you don't want to use Groq cloud, change this to the OpenAI compatible base_url you want.
-openai_base_url = "https://api.groq.com/openai/v1"
 #
 # Filenames/paths for saving settings:
 channels_filename = "channels.json"
