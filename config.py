@@ -52,7 +52,6 @@ nocontext_temperature = None
 #
 # Filenames/paths for saving settings:
 channels_filename = "channels.json"
-variants_filename = "variants.json"
 prompts_filename = "prompts.json"
 #
 # Help commands contents:
