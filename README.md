@@ -10,7 +10,7 @@ This branch can be easily modified to use any other OpenAI API compatible servic
 
 If you want the old version, use the [pawan](https://github.com/KubakaOff/SimpleDiscordAIChatbot/tree/pawan) branch.
 
-Running instance: https://discord.com/oauth2/authorize?client_id=921730426047954965&permissions=274881154048&scope=bot (running on the [pawan](https://github.com/KubakaOff/SimpleDiscordAIChatbot/tree/pawan) branch)
+Running instance: https://discord.com/oauth2/authorize?client_id=921730426047954965&permissions=274881154048&scope=bot
 
 The bot is really simple and customizable.
 
