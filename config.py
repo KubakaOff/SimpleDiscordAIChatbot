@@ -22,11 +22,13 @@ model = "llama3-70b-8192"
 # Billing limit is tokens per month (in tokens)
 # The settings below are PER MODEL
 # None: fallback to global values
-allowed_models = {"llama3-70b-8192": {"max_context": 8192, "billing_limit": None, "default_temperature": None, "response_length": None}, 
-                  "llama3-8b-8192": {"max_context": 8192, "billing_limit": None, "default_temperature": None, "response_length": None}, 
-                  "llama2-70b-4096": {"max_context": 4096, "billing_limit": None, "default_temperature": None, "response_length": None}, 
-                  "mixtral-8x7b-32768": {"max_context": 32768, "billing_limit": None, "default_temperature": None, "response_length": None}, 
-                  "gemma-7b-it": {"max_context": 8192, "billing_limit": None, "default_temperature": None, "response_length": None}}
+# actual_model = Actual model used to generate the response. Can be set to None.
+allowed_models = {"llama3-70b-8192": {"actual_model": None, "prompt": None, "max_context": 8192, "billing_limit": None, "default_temperature": None, "response_length": None}, 
+                  "llama3-8b-8192": {"actual_model": None, "prompt": None, "max_context": 8192, "billing_limit": None, "default_temperature": None, "response_length": None}, 
+                  "llama2-70b-4096": {"actual_model": None, "prompt": None, "max_context": 4096, "billing_limit": None, "default_temperature": None, "response_length": None}, 
+                  "mixtral-8x7b-32768": {"actual_model": None, "prompt": None, "max_context": 32768, "billing_limit": None, "default_temperature": None, "response_length": None}, 
+                  "gemma-7b-it": {"actual_model": None, "prompt": None, "max_context": 8192, "billing_limit": None, "default_temperature": None, "response_length": None},
+                 }
 # Use as much as you can afford (and as much as the model supports)
 max_context = 8192
 # Length of response, one token is around 3-4 characters, so the max is around 500-600, I would recommend something like 200, depends on use case
@@ -63,6 +65,9 @@ nocontext_temperature = None
 # Filenames/paths for saving settings:
 channels_filename = "channels.json"
 prompts_filename = "prompts.json"
+# COMING SOON
+temperature_filename = "temperature.json"
+models_filename = "models.json"
 #
 # Help commands contents:
 help_command = f"""
