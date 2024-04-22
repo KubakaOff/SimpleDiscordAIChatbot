@@ -10,7 +10,7 @@ intents.message_content = True
 bot = commands.Bot(command_prefix=command_prefix, intents=intents)
 bot.remove_command('help')
 
-# Load everything into memory
+# Load everything to memory
 try:
     with open(channels_filename, 'r') as f:
         channels = json.load(f)
