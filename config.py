@@ -16,15 +16,29 @@ command_prefix = "ai!"
 # If you don't want to use Groq cloud, change this to the OpenAI compatible base_url you want.
 openai_base_url = "https://api.groq.com/openai/v1"
 #
-# Enter the model you want to use here.
+# Enter the default model you want to use here.
 model = "llama3-70b-8192"
+# Enter models you want to allow usage of (NOT DONE YET)
+# Billing limit is tokens per month (in tokens)
+# The settings below are PER MODEL
+# None: fallback to global values
+
+allowed_models = {"llama3-70b-8192": {"max_context": 8192, "billing_limit": None, "default_temperature": None, "response_length": None}, 
+                  "llama3-8b-8192": {"max_context": 8192, "billing_limit": None, "default_temperature": None, "response_length": None}, 
+                  "llama2-70b-4096": {"max_context": 4096, "billing_limit": None, "default_temperature": None, "response_length": None}, 
+                  "mixtral-8x7b-32768": {"max_context": 32768, "billing_limit": None, "default_temperature": None, "response_length": None}, 
+                  "gemma-7b-it": {"max_context": 8192, "billing_limit": None, "default_temperature": None, "response_length": None}}
 # Use as much as you can afford (and as much as the model supports)
-max_context = 8000
+max_context = 8192
 # Length of response, one token is around 3-4 characters, so the max is around 500-600, I would recommend something like 200, depends on use case
 response_length = 600
 #
+#
 # Prompt for the AI to follow (as system message). Set to None for no prompt
 prompt = None
+#
+# Do you want to enable the stats command? (COMING SOON)
+stats = True
 #
 # Prompt for the AI to follow without context (as system message). Set to None, prompt or a string.
 nocontext_prompt = prompt
