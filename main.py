@@ -49,7 +49,9 @@ async def chat(ctx, *, args):
     messages = [{"role": "user", "content": args}]
     server_id = str(ctx.guild.id)
 
-    if server_id in prompts.get(server_id, {}):
+    if prompt != None:
+        messages.insert(0, {"role": "system", "content": prompt})
+    elif server_id in prompts.get(server_id, {}):
         messages.insert(0, {"role": "system", "content": prompts[server_id]["global"]})
 
     async with ctx.channel.typing():
@@ -130,7 +132,7 @@ async def on_message(msg):
             role = get_role(message.author)
             list_of_messages.append({"role": role, "content": message.content})
 
-        actual_prompt = prompts.get(server_id, {}).get(str(msg.channel.id)) or prompts.get(server_id, {}).get('global')
+        actual_prompt = prompts.get(server_id, {}).get(str(msg.channel.id)) or prompts.get(server_id, {}).get('global') or prompt
 
         if actual_prompt:
             list_of_messages.append({"role": "system", "content": actual_prompt})
@@ -147,7 +149,7 @@ async def on_message(msg):
             else:
                 break
 
-        if prompt:
+        if actual_prompt:
             truncated_messages.pop()
             truncated_messages.insert(0, {"role": "system", "content": actual_prompt})
 
