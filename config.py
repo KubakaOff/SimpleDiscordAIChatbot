@@ -1,16 +1,13 @@
 # BOT SETUP
-# 1. GO TO discord.pawan.krd and join the server
-# 2. Verify (if you have to) and go to the channel "#bot"
-# 3. Type in /key
-# 4. Copy the key here
+# 1. Go to console.groq.com and get an API key.
 api_key = "KEY FROM console.groq.com"
-# 5. Install py-cord, tiktoken and openai (python -m pip install py-cord tiktoken openai)
-# 6. Go to the Discord Developer Portal and Generate a bot token
-# 7. Enter the token below
+# 2. Install py-cord, tiktoken and openai (python -m pip install py-cord tiktoken openai)
+# 3. Go to the Discord Developer Portal and Generate a bot token
+# 4. Enter the token below
 discord_token = "TOKEN FROM DISCORD DEV PORTAL"
-# 8. Uncomment one of the models with the usage below the instruction
-# 9. Configure rest of the stuff, the comments are there to explain everything
-# 10. Done!
+# 5. Uncomment one of the models with the usage below the instruction
+# 6. Configure rest of the stuff, the comments are there to explain everything
+# 7. Done!
 # IMPORTANT! IF YOU GET ANY ERRORS WHEN GENERATING A RESPONSE, RUN /resetip IN THE #bot CHANNEL IN THE PAWAN SERVER YOU JOINED EARLIER
 #
 # Prefix for commands in the bot
