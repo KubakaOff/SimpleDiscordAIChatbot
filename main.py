@@ -49,11 +49,10 @@ async def chat(ctx, *, args):
     messages = [{"role": "user", "content": args}]
     server_id = str(ctx.guild.id)
 
-    if prompt != None:
-        messages.insert(0, {"role": "system", "content": prompt})
-    elif server_id in prompts.get(server_id, {}):
+    if server_id in prompts.get(server_id, {}):
         messages.insert(0, {"role": "system", "content": prompts[server_id]["global"]})
-
+    elif nocontext_prompt != None:
+        messages.insert(0, {"role": "system", "content": nocontext_prompt})
     async with ctx.channel.typing():
         response = await asyncio.wait_for(generate_response(messages, temperature, response_length), None)
         await ctx.reply(response.choices[0].message.content[:2000])
