@@ -30,7 +30,7 @@ allowed_models = {"llama3-70b-8192": {"actual_model": None, "prompt": None, "max
                   "gemma-7b-it": {"actual_model": None, "prompt": None, "max_context": 8192, "billing_limit": None, "default_temperature": None, "response_length": None},
                  }
 # Use as much as you can afford (and as much as the model supports)
-max_context = 8192
+max_context = 7500
 # Length of response, one token is around 3-4 characters, so the max is around 500-600, I would recommend something like 200, depends on use case
 response_length = 600
 #
